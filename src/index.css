@@ -1,3 +1,12 @@
 main{
     min-height: 80vh;
 }
+.rating span{
+    margin: 0.1rem;
+}
+.product-name:link,
+.product-name:visited
+{
+    text-transform: none;
+    text-decoration: none;
+}

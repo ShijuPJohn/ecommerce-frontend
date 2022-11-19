@@ -8,7 +8,7 @@ function Product({product}) {
             <Card.Img src={product.image} alt="image"/>
         </a>
         <Card.Body>
-            <a href={`/product/${product._id}`}>
+            <a href={`/product/${product._id}`} className={"product-name"}>
                 <Card.Title as={"div"}>
                     <strong>{product.name}</strong>
                 </Card.Title>
