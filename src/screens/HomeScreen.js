@@ -4,6 +4,8 @@ import Product from "../components/Product";
 import axios from "axios";
 import {listProducts} from "../actions/productActions";
 import {useDispatch, useSelector} from "react-redux";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 function HomeScreen(props) {
     const dispatch = useDispatch()
@@ -15,17 +17,18 @@ function HomeScreen(props) {
     return (
         <>
 
-            {loading ? <h1>Loading......</h1> :
-                <>
-                    <h1>Latest Products</h1>
-                    <Row>
-                        {products.map((product) => (
-                            <Col key={product._id} sm={12} md={2} lg={4} xl={3}>
-                                <Product product={product}/>
-                            </Col>
-                        ))}
-                    </Row>
-                </>}
+            {loading ? <Loader/> :
+                error ? <Message variant={"danger"}>{error}</Message> :
+                    <>
+                        <h1>Latest Products</h1>
+                        <Row>
+                            {products.map((product) => (
+                                <Col key={product._id} sm={12} md={2} lg={4} xl={3}>
+                                    <Product product={product}/>
+                                </Col>
+                            ))}
+                        </Row>
+                    </>}
 
         </>
     );
