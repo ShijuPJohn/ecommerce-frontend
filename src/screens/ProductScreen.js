@@ -4,6 +4,8 @@ import {Button, Card, Col, Image, ListGroup, ListGroupItem, Row} from "react-boo
 import Rating from "../components/Rating";
 import {useDispatch, useSelector} from "react-redux";
 import {productDetailsAction} from "../actions/productActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 function ProductScreen() {
     const dispatch = useDispatch()
@@ -15,8 +17,7 @@ function ProductScreen() {
     }, [])
     const {error, loading, product} = productDetails
     return (<>
-            {loading?<h1>Loading.....</h1>:
-            error?<h1>Error...</h1>:
+            {loading ? <Loader/> : error ? <Message variant={"danger"}>{error}</Message> :
             <>
                 <Link to={"/"} className={'btn btn-light my-3'}>Go Back</Link>
                 <Row>
