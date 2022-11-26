@@ -9,10 +9,28 @@ const reducer = combineReducers({
     productDetailsR: productDetailsReducer,
     cart: cartReducer,
 })
+function saveToLocalStorage(store) {
+    try {
+        const serializedStore = JSON.stringify(store);
+        window.localStorage.setItem("store", serializedStore);
+    } catch (e) {
+    }
+}
 
-const initialState = {}
+function loadFromLocalStorage() {
+    try {
+        const serializedStore = window.localStorage.getItem("store");
+        if (serializedStore === null) return undefined;
+        return JSON.parse(serializedStore);
+    } catch (e) {
+        return undefined;
+    }
+}
+const initialState = loadFromLocalStorage()
 
 const middleware = [thunk]
 const store = createStore(reducer, initialState, composeWithDevTools(applyMiddleware(...middleware))) //TODO createStore() is deprecated
+
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 export default store
