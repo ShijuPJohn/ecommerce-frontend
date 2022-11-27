@@ -82,6 +82,14 @@ function CartScreen(props) {
                         </ListGroup>
                     </>}
                 </Col>
+                <Col md={4}>
+                    <ListGroup variant={"flush"}>
+                        <ListGroup.Item>
+                            <h2>Subtotal ${cartState.cartItems.reduce((acc, item) => (acc += (item.price * item.qty)), 0)}
+                            </h2>
+                        </ListGroup.Item>
+                    </ListGroup>
+                </Col>
 
             </Row>
         </>
