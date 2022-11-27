@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link, Navigate, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {addToCart} from "../actions/cartActions";
+import {addToCart, removeFromCart} from "../actions/cartActions";
 import {Button, Col, Form, Image, ListGroup, Row} from "react-bootstrap";
 import Message from "../components/Message";
 
@@ -19,6 +19,11 @@ function CartScreen(props) {
         }
 
     }, [dispatch, id, qty])
+
+    function removeFromCartHandler(item) {
+        removeFromCart(dispatch, item.product)
+    }
+
     console.log(cartState.cartItems)
     return (
         <>
@@ -65,7 +70,9 @@ function CartScreen(props) {
                                             </Form.Control>
                                         </Col>
                                         <Col md={1}>
-                                            <Button type={"button"} variant={"light"}>
+                                            <Button type={"button"} variant={"light"} onClick={() => {
+                                                removeFromCartHandler(item)
+                                            }}>
                                                 <i className={'fas fa-trash'}/>
                                             </Button>
                                         </Col>

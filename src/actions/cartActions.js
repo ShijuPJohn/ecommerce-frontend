@@ -1,4 +1,4 @@
-import {CART_ADD_ITEM, CART_SET_ITEM_QTY, PRODUCT_LIST_FAIL} from "../constants";
+import {CART_ADD_ITEM, CART_REMOVE_ITEM, CART_SET_ITEM_QTY, PRODUCT_LIST_FAIL} from "../constants";
 import axios from "axios";
 
 export const addToCart = async (dispatch, cartState, id, qty, isAdd) => {
@@ -13,6 +13,23 @@ export const addToCart = async (dispatch, cartState, id, qty, isAdd) => {
                 price: data.price,
                 countInStock: data.countInStock,
                 qty
+            }
+        })
+    } catch (e) {
+        dispatch({
+            type: PRODUCT_LIST_FAIL,
+            payload: e.response && e.response.data.message ? e.response.data.message : e.message
+        })
+    }
+}
+
+export const removeFromCart = async (dispatch, id) => {
+    try {
+        // const {data} = await axios.get(`/api/products/${id}`)
+        dispatch({
+            type: CART_REMOVE_ITEM,
+            payload: {
+                id
             }
         })
     } catch (e) {

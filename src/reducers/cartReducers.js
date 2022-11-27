@@ -24,10 +24,11 @@ export const cartReducer = (state = {cartItems: []}, action) => {
                 }
             }
         case CART_REMOVE_ITEM:
-            return {loading: false, product: action.payload}
+            return {
+                ...state,
+                cartItems: state.cartItems.filter((item) => (item.product !== action.payload.id))
+            }
         case CART_SET_ITEM_QTY:
-            console.log("set quantity", state.cartItems)
-            console.log("payload", action.payload)
 
             return {
                 ...state,
