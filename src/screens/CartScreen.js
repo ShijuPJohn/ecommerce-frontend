@@ -64,6 +64,11 @@ function CartScreen(props) {
                                                 }
                                             </Form.Control>
                                         </Col>
+                                        <Col md={1}>
+                                            <Button type={"button"} variant={"light"}>
+                                                <i className={'fas fa-trash'}/>
+                                            </Button>
+                                        </Col>
                                     </Row>
                                 </ListGroup.Item>
                             ))}
