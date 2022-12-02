@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
     PRODUCT_DETAILS_FAIL,
     PRODUCT_DETAILS_REQUEST,
@@ -5,8 +6,7 @@ import {
     PRODUCT_LIST_FAIL,
     PRODUCT_LIST_REQUEST,
     PRODUCT_LIST_SUCCESS
-} from "../constants";
-import axios from "axios";
+} from "../constants/productConstants";
 
 export const listProducts = async (dispatch) => {
     try {
@@ -16,7 +16,7 @@ export const listProducts = async (dispatch) => {
     } catch (e) {
         dispatch({
             type: PRODUCT_LIST_FAIL,
-            payload: e.response && e.response.data.message ? e.response.data.message : e.message
+            payload: e.response && e.response.data.message ? e.response.data.detail : e.message
         })
     }
 }
@@ -28,7 +28,7 @@ export const productDetailsAction = async (pid, dispatch) => {
     } catch (e) {
         dispatch({
             type: PRODUCT_DETAILS_FAIL,
-            payload: e.response && e.response.data.message ? e.response.data.message : e.message
+            payload: e.response && e.response.data.message ? e.response.data.detail : e.message
         })
     }
 }
