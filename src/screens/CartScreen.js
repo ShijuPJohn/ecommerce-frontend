@@ -73,9 +73,7 @@ function CartScreen(props) {
                                             <Button type={"button"} variant={"light"} onClick={() => {
                                                 removeFromCartHandler(item)
                                             }}>
-                                                <i classNa
-
-                                                   me={'fas fa-trash'}/>
+                                                <i className={'fas fa-trash'}/>
                                             </Button>
                                         </Col>
                                     </Row>
