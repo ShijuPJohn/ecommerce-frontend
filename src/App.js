@@ -5,7 +5,7 @@ import HomeScreen from "./screens/HomeScreen";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
-import LoginScreen from "./screens/loginScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 function App() {
     return (<BrowserRouter>

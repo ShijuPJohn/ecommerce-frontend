@@ -7,7 +7,6 @@ function FormContainer({children}) {
             <Row className={"justify-content-md-center"}>
                 <Col xs={12} md={6}>
                     {children}
-                    hello
                 </Col>
             </Row>
         </Container>
