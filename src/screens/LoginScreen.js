@@ -17,6 +17,7 @@ function LoginScreen({location, history}) {
             console.log(userInfo)
             navigate('/')
         }
+        console.log('login :', login(email, password))
     }, [userLogin])
 
     function formSubmitHandler(e) {
